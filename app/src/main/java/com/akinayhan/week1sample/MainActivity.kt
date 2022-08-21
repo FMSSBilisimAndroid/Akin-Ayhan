@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-//import com.squareup.picasso.Picasso
+import com.squareup.picasso.Picasso
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         init()
 
-        //Picasso.get().load("https://i.imgur.com/DvpvklR.png").into(imageView);
+        Picasso.get().load("https://i.imgur.com/DvpvklR.png").into(imageView)
 
         button.setOnClickListener {
             rollDice()
