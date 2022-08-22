@@ -1,39 +1,34 @@
 package com.akinayhan.week1sample
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
+import com.akinayhan.week1sample.databinding.ActivityMainBinding
 import com.squareup.picasso.Picasso
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var button:Button
-    private lateinit var imageView:ImageView
+    //binding bağlam sınıfını kullanıyoruz.
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        init()
+        //setContentView(R.layout.activity_main) yerine binding kullanıyoruz
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        Picasso.get().load("https://i.imgur.com/DvpvklR.png").into(imageView)
+        //picasso ile internetten imageView e resim çekiyoruz.
+        Picasso.get().load("https://i.imgur.com/DvpvklR.png").into(binding.imageView)
 
-        button.setOnClickListener {
+        //buton tıklama eventi.
+        binding.mybutton.setOnClickListener {
+            //Butona tıklandığında çalışacak fonksiyonumuzu çağırıyoruz.
             rollDice()
         }
-
     }
-
-    private fun init(){
-        button = findViewById(R.id.mybutton)
-        imageView = findViewById(R.id.imageView)
-    }
-
 
     private fun rollDice() {
-        val randomInt = Random().nextInt(6)+1
-        val drawableResource = when (randomInt){
+        val randomNumber = Random().nextInt(6)+1
+        val drawableResource = when (randomNumber){
             1->R.drawable.ic_dice_1
             2->R.drawable.ic_dice_2
             3->R.drawable.ic_dice_3
@@ -41,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             5->R.drawable.ic_dice_5
             else->R.drawable.ic_dice_6
         }
-        imageView.setImageResource(drawableResource)
+        binding.imageView.setImageResource(drawableResource)
     }
     
 

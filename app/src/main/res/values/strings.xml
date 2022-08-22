@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Week1Sample</string>
+    <string name="app_name">Roll The Dice</string>
+    
+    <string name="roll_the_dice">Zar At</string>
 </resources>
